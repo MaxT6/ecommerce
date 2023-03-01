@@ -76,7 +76,7 @@ export const StateContext = ({ children }) => {
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
       }
     }
-    console.log("CI:", cartItems, "NCI:", newCartItems)
+    // console.log("CI:", cartItems, "NCI:", newCartItems)
   }
 
   const incQty = () => {

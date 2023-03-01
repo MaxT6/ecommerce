@@ -8,7 +8,7 @@ import { useStateContext } from '@/context/StateContext';
 
 
 const ProductDetails = ({ product, products }) => {
-console.log('product', product)
+// console.log('product', product)
   const { image, name, details, price } = product;
 
   const [index, setIndex]=useState(0)
@@ -25,6 +25,7 @@ console.log('product', product)
           <div className='small-images-container'>
             {image?.map((item, i) => (
               <img
+                key={i}
                 src={urlFor(item)}
                 className={i === index ? 'small-image selected-image' : 'small-image'}
                 onMouseEnter={() => setIndex(i)} 
@@ -70,7 +71,7 @@ console.log('product', product)
         <div className='marquee'>
           <div className='maylike-products-container track'>
             {products.map((item) => (
-              <Product key={item.id} product={item}/>
+              <Product key={item._id} product={item}/>
             ))}
           </div>
         </div>
@@ -107,7 +108,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params: { slug }}) => {
-  console.log('slug', slug)
+  // console.log('slug', slug)
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
   const productsQuery = '*[_type == "product"]'
 
